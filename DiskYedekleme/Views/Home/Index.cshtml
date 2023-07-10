@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model DiskYedekleme.Models.Users
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Giriş Ekranı</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Ekranın tam ortasında yer almasını sağlar */
+        .center-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="container center-screen">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Giriş</h5>
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                {
+                    @ViewBag.Error
+                    <form>
+                        <div class="form-group">
+                            <label for="username">Kullanıcı Adı:</label>
+
+                            @Html.TextBoxFor(Model => Model.USERNAME, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Parola:</label>
+                            @Html.PasswordFor(Model => Model.PASSWORD, new { @class = "form-control" })
+                        </div>
+                        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+
+                        @Html.ActionLink("Kayıt ol", "CreateAccount", "Home", null, new { @class = " btn btn-primary" })
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
